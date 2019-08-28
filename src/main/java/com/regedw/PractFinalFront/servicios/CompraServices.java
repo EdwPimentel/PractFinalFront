@@ -27,7 +27,7 @@ public class CompraServices {
         return compraRepository.findAll();
     }
 
-    public Compras buscarPorId(Long id) {
+    public Compras buscarPorId(int id) {
         return compraRepository.findCompraById(id);
     }
 
