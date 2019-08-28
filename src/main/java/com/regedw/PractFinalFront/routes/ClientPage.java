@@ -11,6 +11,8 @@ import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.notification.Notification;
@@ -38,24 +40,33 @@ public class ClientPage extends VerticalLayout {
     Producto videv = new Producto(4,"video evento",4000.00);
     List<Producto> list = new ArrayList<Producto>();
     public ClientPage() {
-        LoginOverlay component = new LoginOverlay();
+        H3 title = new H3("Bienvenidos a R&E Fotos!");
+        Icon camera = new Icon(VaadinIcon.CAMERA);
+        camera.setSize("100px");
+        camera.setColor("purple");
+        add(title);
+        add(camera);
+        setHorizontalComponentAlignment(Alignment.CENTER,camera,title);
+
+       /* LoginOverlay component = new LoginOverlay();
         component.addLoginListener(e -> {
             if (e.getUsername().equals("admin") && e.getPassword().equals("admin"))
                 component.close();
             else
                 component.setError(true);
         });
-        component.setOpened(true);
+        component.setOpened(true); */
 
-        //  Button btn = new Button("generar");
-        //  btn.addClickListener(event -> {
-        // Notification noti = new Notification(
-        //        emailField.getValue(), 3000, Notification.Position.TOP_CENTER
-        //);
-        //noti.open();
-        //});
-        // add(emailField);
-        // add(btn);
+//          Button btn = new Button("generar");
+//          btn.addClickListener(event -> {
+//         Notification noti = new Notification(
+//                emailField.getValue(), 3000, Notification.Position.TOP_CENTER
+//        );
+//        noti.open();
+//        });
+//         add(emailField);
+//         add(btn);
+
         Accordion accordion = new Accordion();
         accordion.setWidthFull();
         accordion.close();
@@ -80,24 +91,24 @@ public class ClientPage extends VerticalLayout {
         prebodaLayout.setHorizontalComponentAlignment(Alignment.CENTER,titulo2,img2,precio2,check2);
 
         VerticalLayout videoventoLayout = new VerticalLayout();
+        H2 titulo3 = new H2("El plan para grabacion de videos y fotos de eventos");
+        Html img3 = new Html("<img src='https://www.orangeworks.ie/wp-content/uploads/2015/09/Laser-Clays--600x400.jpg?x40053'>");
+        H3 precio3 = new H3("$"+videv.getPrecio().toString());
         Checkbox check3 = new Checkbox("Seleccionar");
-
-        videoventoLayout.add(
-                new TextField("Name"),
-                new TextField("Phone"),
-                new TextField("Email"),check3
-
+        videoventoLayout.add(titulo3,img3, precio3,check3
         );
         accordion.add("Paquete Video Evento", videoventoLayout);
+        videoventoLayout.setHorizontalComponentAlignment(Alignment.CENTER,titulo3,img3,precio3,check3);
 
         VerticalLayout cumpleLayout = new VerticalLayout();
+        H2 titulo4 = new H2("El plan para sesiones de fotos de cumpleanios.");
+        Html img4 = new Html("<img src='https://didiscooldham.co.uk/wp-content/uploads/2017/09/1-4.jpg'>");
+        H3 precio4 = new H3("$"+cumple.getPrecio().toString());
         Checkbox check4 = new Checkbox("Seleccionar");
-        cumpleLayout.add(
-                new TextField("Name"),
-                new TextField("Phone"),
-                new TextField("Email"),check4
+        cumpleLayout.add(titulo4,img4,precio4,check4
         );
         accordion.add("Paquete de cumple", cumpleLayout);
+        cumpleLayout.setHorizontalComponentAlignment(Alignment.CENTER,titulo4,img4,precio4,check4);
 
 
         add(accordion);
@@ -122,7 +133,6 @@ public class ClientPage extends VerticalLayout {
                   Notification noti = new Notification("Seleccione un paquete",3000, Notification.Position.TOP_CENTER
                   );
                   noti.open();
-
               }
           }
         );

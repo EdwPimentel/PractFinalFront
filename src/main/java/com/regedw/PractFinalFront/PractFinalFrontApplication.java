@@ -8,6 +8,7 @@ public class PractFinalFrontApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PractFinalFrontApplication.class, args);
+
 	}
 
 }
