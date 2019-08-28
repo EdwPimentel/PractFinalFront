@@ -1,9 +1,27 @@
 package com.regedw.PractFinalFront;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Producto {
-    int id;
-    String nombre;
-    Double precio;
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String nombre;
+    private Double precio;
+
+    public Producto(String nombre, Double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    public Producto() {
+    }
+
     public int getId() {
         return id;
     }

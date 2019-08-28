@@ -1,6 +1,7 @@
 package com.regedw.PractFinalFront.routes;
 
 import com.regedw.PractFinalFront.Producto;
+import com.regedw.PractFinalFront.servicios.ProductoServicios;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
@@ -27,6 +28,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +36,23 @@ import java.util.List;
 
 @Route("def")
 public class ClientPage extends VerticalLayout {
+
+
+    private ProductoServicios productoServicios;
+
     Producto preboda = new Producto(1,"preboda",1000.00);
     Producto boda = new Producto(2,"boda",5000.00);
     Producto cumple = new Producto(3,"cumple",3000.00);
     Producto videv = new Producto(4,"video evento",4000.00);
     List<Producto> list = new ArrayList<Producto>();
-    public ClientPage() {
+    public ClientPage(@Autowired ProductoServicios productoServicios ) {
+
+        this.productoServicios =productoServicios;
+
+
+
+        productoServicios.ListarProductos();
+
         H3 title = new H3("Bienvenidos a R&E Fotos!");
         Icon camera = new Icon(VaadinIcon.CAMERA);
         camera.setSize("100px");
