@@ -130,19 +130,19 @@ public class ClientPage extends VerticalLayout {
         btnLay.setHorizontalComponentAlignment(Alignment.CENTER, btn);
         add(btn);
           btn.addClickListener(event -> {
-              if (check1.getValue()==true){
+              if (check1.getValue()){
                   list.add(preboda);
               }
-              else if (check2.getValue()==true){
+              else if (check2.getValue()){
                   list.add(boda);
               }
-              else if (check3.getValue()==true){
+              else if (check3.getValue()){
                   list.add(cumple);
               }
-              else if (check4.getValue()==true){
+              else if (check4.getValue()){
                   list.add(videv);
               }
-              else if (check1.getValue()==false && check2.getValue()==false && check3.getValue()==false && check4.getValue()==false) {
+              else if (!check1.getValue() && !check2.getValue() && !check3.getValue() && !check4.getValue()) {
                   Notification noti = new Notification("Seleccione un paquete",3000, Notification.Position.TOP_CENTER
                   );
                   noti.open();
